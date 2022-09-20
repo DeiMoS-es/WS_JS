@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        //variables declaradas
+        //====================
+        var nombre;//aquí no tiene "valor", tiene pero es undefined
+        var puntos;
+        var aprobado;
+        var mensaje;
+        //var nota_meda; //snake case
+        var notaMedia; //camel case
+
+        //Inicializamos las variables
+        //===========================
+        nombre = "María";  //Tipo String
+        puntos = 100;      //Tipo number
+        aproibado = true;  //Tipo Boolean o false
+        notaMedia = 9.25;  //Tipo float
+
+        //Maria ha obtenido 100 puntos y tiene una nota media de 9.25
+
+        //Concatenamos
+        //============
+        //Se va a producir una conversión implícita de datos, es decir, automática
+        
+        //mensaje = nombre +" ha obtenido "+ puntos + " puntos y tiene una nota media de: " +notaMedia ;
+        //mensaje = nombre.concat(" ha obtenido ", puntos, " puntos y tiene una nota media de: " , notaMedia.toString().replace(".", ","));
+        
+        //Interpolamos
+        //============
+        mensaje = `${nombre} ha obtenido: ${puntos} puntos, y tiene una nota media de: ${notaMedia.toString().replace(".",",")}`
+        console.log(mensaje);
+
+    </script>
+</html>

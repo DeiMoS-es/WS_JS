@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+        <!--<script src="miScript.js"></script>-->
+    </head>
+    <body>
+        <div >
+            <label for="">Introduzca su edad </label>
+        </div>
+        <div>
+            <input type="text" id="edad" readonly style="background-color: white;">
+            <button onclick="f_pedirEdad()">Pedir edad</button>
+        </div>
+        <div >
+            último div
+        </div>
+
+    </body>
+</html>
+<script>
+    var dom_edad;
+    dom_edad = document.getElementById("edad");
+    dom_edad.classList.add("colorFondo")
+    var f_pedirEdad = function(){
+    var edad;
+
+    edad = parseInt(prompt("Por favor introduzca su edad: "));
+    if(isNaN(edad)){
+        alert("Edad incorrecta");
+    }else{
+        if( parseInt(edad) < 18){
+        dom_edad.style.backgroundColor = "red";
+        dom_edad.style.color = "white";
+        }else{
+            dom_edad.style.backgroundColor = "green";
+            dom_edad.style.color = "white";
+        }
+    }
+    dom_edad.value = edad;
+
+    
+};
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var nota;
+    //Realizamos una conversión explícita
+    nota = parseFloat(prompt("Introduce la nota")) ;//promp recoge un string
+    
+    //Validamos
+    if (isNaN(nota)) {
+        alert("Nota incorrecta");
+    }else{
+        //Incrementamos la nota en 1 punto.
+        nota = nota + 1;// para el sistema es una concatenación de dos string, devuelve 101, para que no haga la concatenación hacemos el parseFloat() de promp
+        //nota += 1; //también devuelve una concatenación
+        //nota++;
+    }
+    //Redondea a 2 decimales
+    alert(nota.toFixed(2));
+
+</script>
