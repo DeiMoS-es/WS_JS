@@ -48,6 +48,9 @@
             dom_btn2.value = numeroDado;
             dom_btn2.disabled = true;
         }
+        if(dom_btn1.value != "" && dom_btn2.value != ""){
+            dom_btnGanador.disabled = false;
+        }
     }
 
     function ganador(){
@@ -65,7 +68,7 @@
     function iniciarPartida(){
         dom_btn1.disabled = false;
         dom_btn2.disabled = false;
-        dom_btnGanador.disabled = false;
+        
         puntosJ1 = 0;
         puntosJ2 = 0;
         dom_imgDado1.src = "";
