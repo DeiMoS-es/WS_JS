@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnDado1" >Lanzar Jugador 1</button>
+    <button id="btnDado2" >Lanzar Jugador 2</button>
+    <br>
+    <img id="imgDado1" src="" alt="">
+    <img id="imgDado2" src="" alt="">
+    <hr>
+    <button id="btnGanador">Comprobar Ganador</button>
+    <button id="btnInicio">Iniciar Partida</button>
+</body>
+</html>
+<script>
+    var dom_btn1 = document.getElementById("btnDado1");
+    var dom_btn2 = document.getElementById("btnDado2");
+    var dom_btnIniciarPartida = document.getElementById("btnInicio");
+    var dom_btnGanador = document.getElementById("btnGanador");
+    var dom_imgDado1 = document.getElementById("imgDado1");
+    var dom_imgDado2 = document.getElementById("imgDado2");
+    var nombreImagen;
+    var numeroDado;
+    var puntosJ1;
+    var puntosJ2;
+
+    dom_btn1.onclick = lanzarDado;
+    dom_btn2.onclick = lanzarDado;
+    dom_btnIniciarPartida.onclick = iniciarPartida;  
+    dom_btnGanador.onclick = ganador;  
+
+
+    function lanzarDado(event){        
+        numeroDado = Math.floor(Math.random() * 6) + 1; //Número aleatorio entre 1 y 5
+        nombreImagen = "dado_"+numeroDado+".png";
+        if(event.path[0].id == "btnDado1"){
+            dom_imgDado1.src=nombreImagen;
+            dom_btn1.value = numeroDado;
+            dom_btn1.disabled = true;
+        }
+        else{
+            dom_imgDado2.src=nombreImagen;
+            dom_btn2.value = numeroDado;
+            dom_btn2.disabled = true;
+        }
+    }
+
+    function ganador(){
+        var puntosJ1 = dom_btn1.value;
+        var puntosJ2 = dom_btn2.value;
+        if(puntosJ1 > puntosJ2){
+            alert("Gana J1");
+        }else if(puntosJ2 > puntosJ1){
+            alert("Gana J2");
+        }else{
+            alert("Empate");
+        }
+    }
+
+    function iniciarPartida(){
+        dom_btn1.disabled = false;
+        dom_btn2.disabled = false;
+        dom_btnGanador.disabled = false;
+        puntosJ1 = 0;
+        puntosJ2 = 0;
+        dom_imgDado1.src = "";
+        dom_imgDado2.src = "";
+    }
+
+    document.body.onload = () =>{
+        dom_btn1.disabled = true;
+        dom_btn2.disabled = true;
+        dom_btnGanador.disabled = true;
+    }
+</script>
