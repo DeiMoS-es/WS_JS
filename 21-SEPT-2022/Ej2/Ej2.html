@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="Alumno.class.js"></script>
+<script>
+    var alumno1 = new Alumno(1, "Nagib", "Delgado", 123456789);
+    var alumno2 = new Alumno(2, "Celia", "Bosque", 987654321);
+    var alumno3 = new Alumno();
+
+    var texto;
+
+    texto = alumno1.detalle();
+    document.body.innerHTML = texto;
+
+    texto = alumno2.detalle();
+    document.body.innerHTML += texto;
+
+    alumno1.calificar(5);
+    
+    document.body.innerHTML += "La nota del alumno: " + 
+                            alumno1.nombre + " es de: " +
+                            alumno1.nota;
+    console.log(alumno1);
+    console.log(alumno2);
+    console.log(alumno3);
+</script>
