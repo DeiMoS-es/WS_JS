@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="number" id="numero1" min="0" max="100" step="0.1">
+        <select name="" id="operacion">
+            <option value="+">Sumar</option>
+            <option value="-">Restar</option>
+            <option value="*">Multiplicar</option>
+            <option value="/">Dividir</option>
+        </select>
+        <input type="number" id="numero2" min="0" max="100" step="0.1">
+        <label for="">=</label>
+        <input type="number" id="resultado" readonly>
+
+        <button id="btnCalcular">Calcular</button>        
+    </div>
+</body>
+</html>
+<script>
+    var dom_numero1 = document.getElementById("numero1");
+    var dom_numero2 = document.getElementById("numero2");
+    var dom_resultado = document.getElementById("resultado");
+    var dom_btnCalcular = document.getElementById("btnCalcular");
+    var dom_operacion = document.getElementById("operacion");
+
+    dom_btnCalcular.onclick = () =>{
+        var numero1 = parseFloat(dom_numero1.value);
+        var numero2 = parseFloat(dom_numero2.value);
+        var mensajeError="";
+        var resultado;
+
+        if(isNaN(numero1)){
+            mensajeError = "- Numero1, formato incorrecto.";
+        }
+        if(isNaN(numero2)){
+            mensajeError += "- Numero2, formato incorrecto";
+        }
+        if(mensajeError===""){
+            switch(dom_operacion.value){
+                case '+':
+                    resultado = numero1 + numero2;
+                    break;
+                case '-':
+                    resultado = numero1 - numero2;
+                    break;
+                case '*':
+                    resultado = numero1 * numero2;
+                    break;
+                case '/':
+                    resultado = numero1 / numero2;
+                    break;                    
+            };
+            dom_resultado.value = resultado;
+        }else{
+            alert(mensajeError);
+            dom_reultado.value="";
+        }
+    };
+
+    dom_operacion.onchange = (p_evento) =>{
+        var mensaje;
+        var textoOperacion = dom_operacion.options[dom_operacion.selectedIndex].innerText;
+
+        mensaje = "Has seleccionado la operación " + textoOperacion;
+        alert(mensaje);
+    }
+</script>

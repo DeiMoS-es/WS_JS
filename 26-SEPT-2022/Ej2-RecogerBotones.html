@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="pantalla" readonly>
+    <div>
+        <button id="btn7" class="boton">7</button>
+        <button id="btn8" class="boton">8</button>
+        <button id="btn9" class="boton">9</button>
+    </div>    
+    <div>
+        <button id="btn4" class="boton">4</button>
+        <button id="btn5" class="boton">5</button>
+        <button id="btn6" class="boton">6</button>
+    </div>    
+    <div>
+        <button id="btn1" class="boton">1</button>
+        <button id="btn2" class="boton">2</button>
+        <button id="btn3" class="boton">3</button>
+    </div>    
+    <div>
+        <button id="btn0" class="boton">0</button>
+    </div>
+</body>
+</html>
+<script>
+    var dom_pantalla = document.getElementById("pantalla");
+    var dom_botones = document.getElementsByClassName("boton");
+    var dom_boton;
+
+    for(let i = 0; i < dom_botones.length; i++){
+        dom_boton = dom_botones[i];
+        dom_boton.onclick = f_pulsarBoton;
+    }
+
+    function f_pulsarBoton(p_evento){
+        var dom_botonPulsado = p_evento.target;
+        var idBotonPulsado = dom_botonPulsado.id;
+
+        dom_pantalla.value += dom_botonPulsado.innerText;
+    }
+
+    localStorage.setItem("lastName ", "Nagib");
+    localStorage.getItem("lastName");
+</script>

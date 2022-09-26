@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body>
+    <button id="btnSaludar">Saludar</button>
+    <input type="text" id="pantalla" readonly>
+    <div>
+        <button id="btn7">7</button>
+        <button id="btn8">8</button>
+        <button id="btn9">9</button>
+    </div>    
+</body>
+</html>
+<script>
+    var don_pantalla = document.getElementById("pantalla");
+    //las funciones que reciben el objeto event, se denominan funciones
+    //manejadoras de eventos
+    var dom_btn7 = document.getElementById("btn7");
+    var dom_btn8 = document.getElementById("btn8");
+    var dom_btn9 = document.getElementById("btn9");
+
+    dom_btn7.onclick = f_pulsarBoton;
+    dom_btn8.onclick = f_pulsarBoton;
+    dom_btn9.onclick = f_pulsarBoton;
+
+    function f_pulsarBoton(p_evento){
+        var dom_botonPulsado = p_evento.target;
+        var idBotonPulsado = dom_botonPulsado.id;
+        don_pantalla.value += dom_botonPulsado.innerText;
+    }
+</script>

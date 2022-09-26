@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            /*
+            div{
+                border: 1px solid red;
+            }
+            */
+            .en_linea{
+                display: inline-block;
+            }
+            .centrado{
+                text-align: center;
+            }
+            #divJugador1{
+                vertical-align: top;
+            }
+            #divPrincipal{
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="divPrincipal">
+            <div class="en_linea centrado" id="divJugador1">
+                <button id="btnJugador1">Lanzar Jugador 1</button>
+                <br>
+                <img id="dado1" src="">
+            </div>
+            <div class="en_linea centrado">
+                <button id="btnJugador2">Lanzar Jugador 2</button>
+                <br>
+                <img id="dado2" src="">
+            </div>
+            <hr>
+            <div>
+                <button id="btnGanador">Comprobar Ganador</button>
+                <br><br>
+                <button id="btnIniciar">Iniciar Partida</button>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    // Declaramos las variables
+    // ========================
+
+    // ...cajas de tipo button
+    var dom_btnJugador1 = document.getElementById("btnJugador1");
+    var dom_btnJugador2 = document.getElementById("btnJugador2");
+    var dom_btnGanador = document.getElementById("btnGanador"); 
+    var dom_btnIniciar = document.getElementById("btnIniciar");
+    
+    // ...cajas de tipo img
+    var dom_dado1 = document.getElementById("dado1");
+    var dom_dado2 = document.getElementById("dado2");
+
+    // ...de tipo primitivo
+    var puntosJugador1 = 0;
+    var puntosJugador2 = 0;
+
+    // ...funciones
+    function f_activarBtnGanador (p_puntosJugador1, p_puntosJugador2, p_dom_btnGanador)
+    {
+        if(p_puntosJugador1!=0 && p_puntosJugador2!=0){
+            p_dom_btnGanador.disabled = false;
+        } 
+    }
+    function f_lanzar(p_puntosJugador, p_puntosJugador1, p_puntosJugador2, 
+                      p_dom_dado, p_dom_btnJugador, p_dom_btnGanador)
+    {
+        p_puntosJugador = Math.floor(Math.random() * 6) + 1;
+        p_dom_dado.src = `imagenes/dado_${p_puntosJugador}.png`;
+        p_dom_btnJugador.disabled=true;
+
+        // comprobamos si debemos activar el botón "Comprobar ganador"
+        f_activarBtnGanador(p_puntosJugador1, p_puntosJugador2, p_dom_btnGanador);
+    }
+
+
+    // Asignamos los eventos
+    // =====================
+    dom_btnJugador1.onclick = function(p_puntosJugador, p_puntosJugador1, p_puntosJugador2, p_dom_dado, p_dom_btnJugador, p_dom_btnGanador)
+    {
+        return function(){
+            f_lanzar(p_puntosJugador, p_puntosJugador1, p_puntosJugador2, p_dom_dado, p_dom_btnJugador, p_dom_btnGanador);
+        } 
+    }(puntosJugador1, puntosJugador1, puntosJugador2, dom_dado1, dom_btnJugador1, dom_btnGanador);
+    
+    dom_btnJugador2.onclick = function(p_puntosJugador, p_puntosJugador1, p_puntosJugador2, p_dom_dado, p_dom_btnJugador, p_dom_btnGanador)
+    {
+        return function(){
+            f_lanzar(p_puntosJugador, p_puntosJugador1, p_puntosJugador2, p_dom_dado, p_dom_btnJugador, p_dom_btnGanador);
+        } 
+    }(puntosJugador2, puntosJugador1, puntosJugador2, dom_dado1, dom_btnJugador1, dom_btnGanador);
+
+
+    dom_btnGanador.onclick = ()=>{
+        // Hay tres casos:
+        
+        // Empate
+        if(puntosJugador1==puntosJugador2)
+        {
+            alert("¡Empate!");
+        }
+        // Gana jugador1
+        else if(puntosJugador1>puntosJugador2)
+        {
+            alert("¡Gana jugador1!");
+        }
+        // Gana jugador2
+        else if(puntosJugador2>puntosJugador1)
+        {
+            alert("¡Gana jugador2!");
+        }
+
+        dom_btnGanador.disabled = true;
+    };
+    dom_btnIniciar.onclick = ()=>{
+        dom_btnJugador1.disabled=false;
+        dom_btnJugador2.disabled=false;
+        dom_btnGanador.disabled=true;
+
+        puntosJugador1 = 0;
+        puntosJugador2 = 0;
+
+        dom_dado1.src="";
+        dom_dado2.src="";
+    };
+    document.body.onload = ()=>{
+        dom_btnJugador1.disabled=true;
+        dom_btnJugador2.disabled=true;
+        dom_btnGanador.disabled=true;
+    }
+</script>
