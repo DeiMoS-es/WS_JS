@@ -34,7 +34,6 @@
     dom_btnIniciarPartida.onclick = iniciarPartida;  
     dom_btnGanador.onclick = ganador;  
 
-
     function lanzarDado(event){        
         numeroDado = Math.floor(Math.random() * 6) + 1; //Número aleatorio entre 1 y 5
         nombreImagen = "dado_"+numeroDado+".png";
@@ -67,8 +66,7 @@
 
     function iniciarPartida(){
         dom_btn1.disabled = false;
-        dom_btn2.disabled = false;
-        
+        dom_btn2.disabled = false;        
         puntosJ1 = 0;
         puntosJ2 = 0;
         dom_imgDado1.src = "";
