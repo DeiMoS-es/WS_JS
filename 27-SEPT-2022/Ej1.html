@@ -17,7 +17,7 @@
                             mensaje = "Número matrícula: " + this.matricula + "<br>" +
                                       " Nombre: " + this.nombre + "<br>" + 
                                       " Apellido: " + this.apellido + "<br>" +
-                                      " Nota media: " + this.notaMedia + "<br>"
+                                      " Nota media: " + this.notaMedia + "<br>" +"<hr>"
                         return mensaje;
                        } 
                     };
@@ -35,12 +35,22 @@
     var objAlumno;
     var texto;
 
-    for (let i = 0; i < alumnos.length; i++) {
+    /*for (let i = 0; i < alumnos.length; i++) {
         objAlumno = alumnos[i];
         texto = objAlumno.detalle();
         //console.log(texto);
         document.body.innerHTML += texto;
     }
+*/
+    alumnos.forEach(function(p_valor, p_posicion, p_array){
+        texto = p_valor.detalle();
+        document.body.innerHTML += texto;
+    });
+
+  /*  alumnos.forEach( (p_valor, p_posicion, p_array) =>{
+        texto = p_valor.detalle();
+        document.body.innerHTML += texto;
+    }); */
   
 
 </script>
