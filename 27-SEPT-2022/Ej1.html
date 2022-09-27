@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso Objetos</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var objAlumno1 = { matricula: 1, nombre: "Nagib", apellido: "Delgado", notaMedia: 9.81, 
+                       detalle: function(){
+                            var mensaje;
+                            mensaje = "Número matrícula: " + this.matricula + "<br>" +
+                                      " Nombre: " + this.nombre + "<br>" + 
+                                      " Apellido: " + this.apellido + "<br>" +
+                                      " Nota media: " + this.notaMedia + "<br>"
+                        return mensaje;
+                       } 
+                    };
+    var objAlumno2 = { matricula: 2, nombre: "Celia", apellido: "Bosque", notaMedia: 8, 
+                       detalle: function(){
+                            var mensaje;
+                            mensaje = "Número matrícula: " + this.matricula + "<br>" +
+                                      " Nombre: " + this.nombre + "<br>" + 
+                                      " Apellido: " + this.apellido + "<br>" +
+                                      " Nota media: " + this.notaMedia + "<br>"
+                        return mensaje;
+                       }  
+                    };
+    var alumnos = [objAlumno1, objAlumno2];
+    var objAlumno;
+    var texto;
+
+    for (let i = 0; i < alumnos.length; i++) {
+        objAlumno = alumnos[i];
+        texto = objAlumno.detalle();
+        //console.log(texto);
+        document.body.innerHTML += texto;
+    }
+  
+
+</script>
