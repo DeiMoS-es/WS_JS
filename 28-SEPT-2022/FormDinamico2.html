@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Dinámico</title>
+</head>
+<body>
+    <!--<input type="number" id="cantidad" placeholder="Introdzca nº de productos">-->
+    <button id="btnCargar">Dibujar Productos</button>
+    <br><br>
+
+    <div id="listadoProductos"></div>
+</body>
+</html>
+<script>
+    var productos = [{producto: "Ratón", stock: 10, precio:15.52},
+                    {producto: "Teclado", stock: 11, precio:12.25},
+                    {producto: "Monitor", stock: 25, precio:150.64}
+                   ];
+    var objProducto;
+
+    var dom_btnCargar = document.getElementById("btnCargar");
+    var dom_listadoProductos = document.getElementById("listadoProductos");
+    dom_btnCargar.onclick=(evento)=>{
+        var html = "<table>"
+            + "<tr>"
+                +"<th>Producto</th>"
+                +"<th>Stock</th>"
+                +"<th>Precio</th>"
+                +"<th></th>";
+
+        for(let i=0; i<productos.length; i++){
+            objProducto = productos[i];
+            html +="<tr>";
+            //html += "<input type='text' placeholder='Producto' value='" + objProducto.producto + "'>";
+            html += `<td><input type='text' placeholder='Producto' value='${objProducto.producto}' id='producto${i}' disabled></td>`;
+            html += `<td><input type='number' placeholder='Stock' value='${objProducto.stock}' id='stock${i}'></td>`;
+            html += `<td><input type='number' placeholder='Precio' value='${objProducto.precio}' id='precio${i}'></td>`;
+            html += `<td><button> Detalle </button></td>`;
+
+            html+="</tr>";
+        };
+        html += "</table>"
+        dom_listadoProductos.innerHTML = html;
+
+        dom_botonesDetalle = document.querySelectorAll("#listadoProductos button");//obtengo todos los botones
+        dom_botonesDetalle.forEach((p_domBtnDetalle, p_i) => {//le apsa el primer botón y el indice
+            p_domBtnDetalle.onclick = (p_evento)=>{
+                var dom_producto = document.getElementById("producto" + p_i);
+                var dom_stock = document.getElementById("stock" + p_i);
+                var dom_precio = document.getElementById("precio" + p_i);
+                var mensaje = "PRODUCTO: " + dom_producto.value + "\n" 
+                            + "STOCK:" + dom_stock.value + "\n" 
+                            + "PRECIO:" + dom_precio.value + "\n" 
+                alert(mensaje);
+            };                        
+        });
+    };
+   
+</script>

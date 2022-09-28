@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Dinámico</title>
+</head>
+<body>
+    <input type="number" id="cantidad" placeholder="Introdzca nº de productos">
+    <button id="btnDibujar">Dibujar formulario</button>
+    <br><br>
+
+    <div id="listadoProductos"></div>
+</body>
+</html>
+<script>
+    var dom_btnDibujar = document.getElementById("btnDibujar");//Obtengo el botón
+    var dom_cantidad = document.getElementById("cantidad");//Obtengo el input donde se introduce la cantidad
+    var dom_listadoProductos = document.getElementById("listadoProductos");
+
+    dom_btnDibujar.onclick = ()=>{//entre parentesis siempre recibe el evento
+        //alert("Hola"); //Compruebo que funciona
+        var cantidad = dom_cantidad.value;
+        var html = ""; 
+
+        for (let i=0; i < cantidad; i++){
+            html += "<input type='text' placeholder='Producto'>"
+             + "<input type='number' placeholder='Stock'>"
+             + "<input type='number' placeholder='Introduzca Precio'>"
+             + "<hr>";    
+             
+        }
+        //document.body.innerHTML += html;
+        dom_listadoProductos.innerHTML = html;//si quieres que acumule los dib +=, si quieres que los ponga nuevo solo =
+    };
+</script>
