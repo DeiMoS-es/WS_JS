@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="GET" id="miFormulario" onsubmit="return f_validar()">
+        <label for="">MATRÍCULA</label>
+        <input type="text" id="matricula" name="matricula"><br><br>
+
+        <label for="">NOMBRE</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+
+        <label for="">TELEFONO</label><br>
+        <input type="text" id="telefono" name="telefono"><br><br>
+
+        <label for="">EMAIL</label><br>
+        <input type="text" id="email" name="email"><br><br>
+
+        <label for="">OBSERVACIONES</label><br>
+        <textarea id="observaciones" name="observaciones"></textarea><br><br>
+
+        <button>Enviar</button>
+    </form>
+</body>
+</html>
+<script>
+    var dom_matricula = document.getElementById("matricula");
+    var dom_nombre = document.getElementById("nombre");
+    var dom_telefono = document.getElementById("telefono");
+    var dom_email = document.getElementById("email");
+    var dom_observaciones = document.getElementById("observaciones");
+    var dom_miFormulario = document.getElementById("miFormulario");
+
+    function f_validar(){
+        var matricula = dom_matricula.value;
+        var dom_nombre = dom_nombre.value;
+        var dom_telefono = dom_telefono.value;
+        var dom_email = dom_email.value;
+        var dom_observaciones = dom_observaciones.value;//es una exepción a pesar de ser doble, como norma general .textValue
+    
+        var ok = true;
+
+        var reg_matricula = /^[0-9]{4}$/;
+        var reg_nombre = /^[a-zA-Z ñÑçÇáéíóúÁÉÍÓÚ]{2,25}$/;
+        var reg_telefono = /^[+][1-9]{2}-[1-9]{9}$/;
+
+        return ok;
+    };
+
+    dom_miFormulario.onsubmit = f_validar;
+</script>
