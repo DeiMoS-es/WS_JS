@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="errores"></div>
+    <form action="#" method="GET" id="miFormulario" onsubmit="return f_validar()">
+        <label for="">MATRÍCULA</label>
+        <input type="text" id="matricula" name="matricula"><br><br>
+
+        <label for="">NOMBRE</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+
+        <label for="">TELEFONO</label><br>
+        <input type="text" id="telefono" name="telefono"><br><br>
+
+        <label for="">EMAIL</label><br>
+        <input type="text" id="email" name="email"><br><br>
+
+        <label for="">OBSERVACIONES</label><br>
+        <textarea id="observaciones" name="observaciones"></textarea><br><br>
+
+        <button>Enviar</button>
+    </form>
+</body>
+</html>
+<script>
+    var dom_matricula = document.getElementById("matricula");
+    var dom_nombre = document.getElementById("nombre");
+    var dom_telefono = document.getElementById("telefono");
+    var dom_email = document.getElementById("email");
+    var dom_observaciones = document.getElementById("observaciones");
+    var dom_miFormulario = document.getElementById("miFormulario");
+    var dom_errores = document.getElementById("errores");
+
+    function f_validar(){
+        var matricula = dom_matricula.value;
+        var nombre = dom_nombre.value;
+        var telefono = dom_telefono.value;
+        var email = dom_email.value;
+        var observaciones = dom_observaciones.value;//es una exepción a pesar de ser doble la otra es el select, como norma general .textValue
+    
+        var ok = true;
+        var mensajeErrores = "";
+
+        //Exp Regulares para validar los campos
+        var reg_matricula = /^[0-9]{4}$/;
+        var reg_nombre = /^[a-zA-Z ñÑçÇáéíóúÁÉÍÓÚ]{2,25}$/;
+        var reg_telefono = /^[+][1-9]{2}-[1-9]{9}$/;
+        var reg_email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var reg_observaciones = /^[a-zA-ZñÑçÇáéíóúÁÉÍÓÚ ,\.]{0,100}$/;
+
+        //Validamos
+        //....campo matrícula
+        if(matricula.trim().length == 0){
+            mensajeErrores += "- Campo MATRÍCULA obligatorio.<br>";
+            ok = false;
+        }else if (!reg_matricula.test(matricula)) {
+            mensajeErrores += "- Campo MATRÍCULA, formato incorrecto.Debe contener 4 dígitos.<br>";
+            ok = false;
+        }
+        //....campo nombre
+        if(nombre.trim() == ""){//es igual a la validación de matrícula
+            mensajeErrores += "- Campo NOMBRE obligatorio.<br>";
+            ok = false;
+        }else if(reg_nombre.test(nombre)==false){
+            mensajeErrores += "- Campo NOMBRE, formato incorrecto.Solo puede contener letras de la A a la Z.<br>";
+            ok = false;
+        }
+        //....campo telefono
+        //El teléfono es opcional, aunque si se completa debe cumpir la expresión regular
+        if(telefono.trim().length > 0 && !reg_telefono.test(telefono)){
+            mensajeErrores += "- Campo TELÉFONO formato incorrecto.<br>";
+            ok = false;
+        }
+        //..campo email
+        if(email.trim().length == 0){
+            mensajeErrores += "- Campo Email obligatorio.<br>";
+            ok = false;
+        }else if(reg_email.test(email)==false){
+            mensajeErrores += "- Campo Email formato incorrecto.<br>";
+            ok = false;
+        }
+        //..campo observaciones
+        if(reg_observaciones.test(observaciones)==false){
+            mensajeErrores += "- Campo observaciones formato incorrecto.<br>";
+            ok = false;
+        }
+        //si hay errores mostramos el contenido de la variable mensajeErrores
+        if(ok === false){
+            dom_errores.innerHTML = mensajeErrores;
+        }
+        return ok;
+    };
+
+    dom_miFormulario.onsubmit = f_validar;
+</script>
