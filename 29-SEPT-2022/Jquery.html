@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="apellido" placeholder="Introduzca su apellido">
+    <button id="btnSaludar">Saludar</button>
+</body>
+</html>
+<script src="jquery/jquery-3.6.1.min.js"></script>
+<script>
+    /*
+    var dom_apellido = document.getElementById("apellido");
+    var dom_btnSaludar = document.getElementById("btnSaludar");
+    dom_btnSaludar.onclick = () =>{
+        var apellido = dom_apellido.value;
+        alert("Buenas tardes " + apellido);
+    }
+    */
+   //CON JQUERY
+   /*
+   $("#btnSaludar").on("click", ()=>{
+    var apellido = $("#apellido").val();
+    alert("Buenas tardes: " + apellido);
+   });
+   */
+  //OTRA FORMA
+  //$(()=>{}); -> ejecuta después de cargar la página
+  $(()=>{//Nos aseguramos que espere a que cargue toda la página
+    $("#apellido").val("Maria");
+    $("#btnSaludar").attr("style", "background-color: green;")
+    $("#btnSaludar").on("click", ()=>{
+    var apellido = $("#apellido").val();
+    alert("Buenas tardes: " + apellido);
+    });
+  });
+</script>

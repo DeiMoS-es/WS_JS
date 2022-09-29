@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="departamentos"></select>
+    <img src="" alt="" id="foto">
+</body>
+</html>
+<script src="js/jquery-3.6.1.min.js"></script>
+<script>
+    $(()=>{
+        var endpoint = "https://collectionapi.metmuseum.org/public/collection/v1/departments";
+
+        function dibujarDatos(p_datos, p_estado){
+            var departamentos;
+            var objDepartamentos;
+            var html = "";
+            if(p_estado == "success"){
+                departamentos = p_datos.departments;
+                console.log(departamentos);
+                for(let i=0; i <departamentos.length; i++){
+                    objDepartamentos = departamentos[i];
+                    html += `<option ">${objDepartamentos.displayName}</option>`;;
+                }
+                $("#departamentos").html(html);
+            }
+            else{
+                alert("Error");
+            }
+        }
+        $.get(endpoint, dibujarDatos);
+    })
+    
+ 
+</script>
