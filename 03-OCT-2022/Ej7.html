@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var notas = [5, 10 ,8 ,9 ,4 ,10];
+
+    //Ordena como texto los números
+    // notas.sort();
+    // alert(notas);
+
+    //Ordena como números
+    notas.sort(f_ordenaAscendente);
+    alert(notas);
+
+    notas.sort(f_ordenaDescendente);
+    alert(notas);
+
+    function f_ordenaAscendente(p_item, p_itemSiguiente){
+        return p_item - p_itemSiguiente;
+    }
+
+    function f_ordenaDescendente(p_item, p_itemSiguiente){
+        return p_itemSiguiente - p_item;
+    }
+</script>

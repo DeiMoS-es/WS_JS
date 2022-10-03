@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const edades = [16,25,17,90];
+    const menoresEdad = edades.filter(f_menorEdad);
+
+    //alert(menoresEdad);
+
+    function f_menorEdad(p_edad){
+        return p_edad<18;
+    }
+
+    const productos = [{idProducto:1, producto: "raton", precio: 10},
+                     {idProducto:2, producto: "teclado", precio: 12},
+                     {idProducto:3, producto: "monitor", precio: 150}];
+    
+    const productosPorPrecios = productos.filter(f_filtro);
+
+    productosPorPrecios.forEach((p_producto) => {
+        var mensaje = "ID: " +p_producto.idProducto + "\n"
+                    + "PRODUCTO: " +p_producto.producto + "\n"
+                    + "PRECIO: " + p_producto.precio;
+                    alert(mensaje);
+    });
+
+    //alert(productosPorPrecios);
+    function f_filtro(p_producto){
+        return p_producto.precio >= 10 && p_producto.precio <=12;
+    }
+</script>

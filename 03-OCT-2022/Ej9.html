@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    String.prototype.quitarTildes = function(){
+         return this.replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u");
+    };
+
+    var nombre = "ángel";
+    var nombre2 = "lópez";
+    alert(nombre.quitarTildes());
+    alert(nombre2.quitarTildes());
+</script>

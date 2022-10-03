@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const numeros = [10, 9 ,5];
+   /* numeros[0] = 11; //si está permitido, cambiar el valor de una posición
+    numeros = [1,2,3];//Esto si que da error ya que está declarado como constante */numeros
+    const resultado = numeros.map(f_Doblar);//recorre elemento a elemento y realiza el calculo de la función. [20,18,10]
+    alert (resultado);
+    
+    function f_Doblar(p_numero){
+        return p_numero * 2;
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var total = f_sumar(5,2,9);
+        total2 = f_sumar(5,2,9,5,2,9,5,2,9,5,2,9,5,2,9,5,2,9,5,2,9,5,2,9); 
+
+        alert(total);
+        alert(total2);
+        
+    
+        function f_sumar(...args){
+        var suma = 0;
+        /*
+        for(let arg of args){
+            suma += arg;
+        }
+        */
+        /*
+        args.2forEach((p_item)=>{
+        suma += item
+        })
+        */
+       for(let i=0; i<args.length; i++){
+            suma += args[i];
+       }
+        return suma;
+    };
+    
+</script>
